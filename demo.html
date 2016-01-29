@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>应用jQuery的one和each等方法设计复杂导航菜单</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+
+</head>
+<body>
+
+<div class="hdnav_top">
+
+	<ul id="nav_menu" class="cen nav_menu">
+		<li id="indexhall"><a class="nav_link" href="">首页</a></li>
+		<li id="womenhall">
+			<a class="nav_link" href="">女鞋馆</a> 
+			<div id="womenhall_menu" class="pop_menu"></div>
+		</li>
+		<li id="menhall">
+			<a class="nav_link" href="">男鞋馆</a> 
+			<div id="menhall_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a> |  
+						<a href="">时尚休闲</a> | <a href="">城市休闲</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		
+		<li id="womenclothing">
+			<a class="nav_link" href="">女装馆</a> 
+			<div id="womenclothing_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a> |  
+						<a href="">时尚休闲</a> | <a href="">城市休闲</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		
+		<li id="menclothing">
+			<a class="nav_link" href="">男装馆</a> 
+		
+			<div id="menclothing_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a> |  
+						<a href="">时尚休闲</a> | <a href="">城市休闲</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		
+		<li id="luggagehall">
+		
+			<a class="nav_link" href="">箱包馆</a>
+			
+			<div id="luggagehall_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		
+		<li id="childrenhall">
+			<a class="nav_link" href="">儿童馆</a> 
+			
+			<div id="childrenhall_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a> |  
+						<a href="">时尚休闲</a> | <a href="">城市休闲</a>
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		<li id="outdoorhall">
+			<a class="nav_link" href="">户外馆</a> 
+			
+			<div id="outdoorhall_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> | 
+						<a href="">侧拉链</a> | <a href="">搭扣</a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+		
+		<li id="sportshall">
+			<a class="nav_link" href="">运动馆</a><em class="menuHotIcon"></em>
+			
+			<div id="sportshall_menu" class="pop_menu">
+				<dl class="bot_line">
+					<dt class="Red"><font color="#ff0000">热门:</font></dt>
+					<dd>
+						<a href=""><font color="#ff0000">新品上市</font></a> | 
+						<a href=""><font color="#ff0000">冬季男鞋</font></a> | 
+						<a href="">满帮鞋</a> | <a href="">男低靴</a> |  
+						<a href="">男中靴</a> | <a href="">超软</a> | 
+						<a href=""><font color="#ff0000">断码清仓</font></a> 
+					</dd>
+				</dl>
+				<dl>
+					<dt>款式:</dt>
+					<dd>
+						<a href="" target="_blank">套脚</a> | <a href="" target="_blank">前系带</a> | 
+						<a href="" target="_blank">松紧带</a> | <a href="" target="_blank">魔术贴</a> |
+					</dd>
+				</dl>
+				<dl>
+					<dt>风格:</dt>
+					<dd>
+						<a href="">商务正装</a> | <a href="">商务休闲</a> |  
+						<a href="">时尚休闲</a> | <a href="">城市休闲</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>材质:</dt>
+					<dd>
+						<a href="">牛皮</a> | <a href="">羊皮</a> |  
+						<a href="">磨砂皮</a> | <a href="">橡胶底</a> |  
+						<a href="">牛筋底</a> | <a href="">复合底</a> 
+					</dd>
+				</dl>
+				<dl class="bot_line_last"></dl>
+				<ul class="brandlogo">
+					<a href=""><img alt="百丽" src="images/belle4.jpg" width="74" height="64" src2="images/belle4.jpg" /></a> 
+					<a href=""><img alt="天美意" src="images/teemix4.jpg" width="74" height="64" src2="images/teemix4.jpg" /></a> 
+					<a href=""><img alt="森达" src="images/senda4.jpg" width="74" height="64" src2="images/senda4.jpg" /></a> 
+					<a href=""><img alt="莱尔斯丹" src="images/lesd4.jpg" width="74" height="64" src2="images/lesd4.jpg" /></a> 
+					<a href=""><img alt="沙驰" src="images/sc4.jpg" width="74" height="64" src2="images/sc4.jpg" /></a> 
+					<a href=""><img alt="策恩" src="images/ce4.jpg" width="74" height="64" src2="images/ce4.jpg" /></a> 
+					<a href=""><img alt="CAMEL骆驼" src="images/lt4.jpg" width="74" height="64" src2="images/lt4.jpg" /></a> 
+					<a href=""><img alt="拔佳" src="images/bata4.jpg" width="74" height="64" src2="images/bata4.jpg" /></a> 
+					<a class="morebrand" href="">更多品牌&gt;&gt;</a> 
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+if(document.getElementById('nav_menu')){
+  var navMenu = $('#nav_menu>li:lt(9)');
+  $('#nav_menu').one('mouseover',function(){
+	  $(this).find('img').each(function(){
+		  var src = this.getAttribute('src2');
+		  $(this).attr('src',src);
+	  })
+  });
+  navMenu.hover(function(){
+	  if(this.id=='indexhall'){
+		  this.className='curron';
+	  }else{
+		  $(this).addClass('hover');
+	  }
+  },function(){
+	  if(this.id=='indexhall'){
+		  this.className='';
+	  }else{
+		  $(this).removeClass('hover');
+	  }
+  });	
+}
+</script>
+<div style="text-align:center;">
+<p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+
+</body>
+</html>
